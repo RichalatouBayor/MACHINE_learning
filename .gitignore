@@ -2,6 +2,7 @@
 __pycache__
 .vscode
 ynov-data/**
+YNOV-DATA/**
 !ynov-data/sources/
 !ynov-data/sources/**
 !ynov-data/*.dvc
