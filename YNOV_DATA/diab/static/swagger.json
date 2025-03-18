@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "API de Prédiction XGBoost",
+      "description": "API permettant de faire des prédictions à partir d'un modèle XGBoost.",
+      "version": "1.0.0"
+    },
+    "host": "127.0.0.1:5000",
+    "schemes": ["http"],
+    "paths": {
+      "/predict": {
+        "post": {
+          "summary": "Faire une prédiction",
+          "description": "Envoie un ensemble de caractéristiques et reçoit une prédiction du modèle XGBoost.",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "age": { "type": "number", "example": 45 },
+                  "location": { "type": "number", "example": 2 },
+                  "race_african_american": { "type": "number", "example": 0 },
+                  "race_asian": { "type": "number", "example": 1 },
+                  "race_caucasian": { "type": "number", "example": 0 },
+                  "race_hispanic": { "type": "number", "example": 0 },
+                  "race_other": { "type": "number", "example": 0 },
+                  "hypertension": { "type": "number", "example": 1 },
+                  "heart_disease": { "type": "number", "example": 0 },
+                  "smoking_history": { "type": "number", "example": 0 },
+                  "bmi": { "type": "number", "example": 24.5 },
+                  "hbA1c_level": { "type": "number", "example": 5.4 },
+                  "blood_glucose_level": { "type": "number", "example": 120 },
+                  "Female": { "type": "number", "example": 1 },
+                  "Male": { "type": "number", "example": 0 }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Résultat de la prédiction",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prediction": { "type": "number" }
+                }
+              }
+            },
+            "400": { "description": "Erreur de validation des données" },
+            "500": { "description": "Erreur serveur" }
+          }
+        }
+      }
+    }
+  }
+  
